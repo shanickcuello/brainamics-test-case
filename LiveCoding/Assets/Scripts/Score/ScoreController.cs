@@ -1,13 +1,20 @@
 using Coins;
-using UnityEngine;
+using Zenject;
 
-public class ScoreManager
+public class ScoreController
 {
-    public int Score = 0;
+    private int Score = 0;
+    private readonly ScoreText _scoreText;
 
+    [Inject]
+    public ScoreController(ScoreText scoreText)
+    {
+        _scoreText = scoreText;
+    }
+    
     public void OnCoinCollectedSignalReceived(CoinCollectedSignal signal)
     {
-        Score++;
-        Debug.Log($"Score {Score}");
+       Score++;
+       _scoreText.SetScore(Score);
     }
 }

@@ -1,11 +1,23 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
-public class Coin : MonoBehaviour, IPointerClickHandler
+namespace Coins
 {
-    public void OnPointerClick(PointerEventData eventData)
+    public class Coin : MonoBehaviour, IPointerClickHandler
     {
-        ScoreManager.Score++;
-        Destroy(gameObject);
+        private SignalBus _signalBus;
+
+        [Inject]
+        public void Construct(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+        }
+    
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            _signalBus.Fire(new CoinCollectedSignal());
+            Destroy(gameObject);
+        }
     }
 }

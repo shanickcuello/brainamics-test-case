@@ -11,8 +11,8 @@ public class ScoreText : MonoBehaviour
         _text = GetComponent<TextMeshProUGUI>();
     }
 
-    private void Start()
+    public void SetScore(int score)
     {
-        _text.text = $"Score: {ScoreManager.Score}";
+        _text.text = score.ToString();
     }
 }
