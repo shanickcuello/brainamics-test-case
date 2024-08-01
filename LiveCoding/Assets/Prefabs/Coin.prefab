@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ffeb8d54c060d49a6bf4bf93fb16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationSettings: {fileID: 11400000, guid: 918bc0eb14cf28d4c8966d42dabae5f0, type: 2}
 --- !u!114 &-8124421010415421233
 MonoBehaviour:
   m_ObjectHideFlags: 0
