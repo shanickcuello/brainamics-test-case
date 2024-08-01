@@ -12,6 +12,9 @@ namespace DependencyInjection
             Container.Bind<ScoreController>().AsSingle();
             Container.Bind<CoinsSpawner>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ScoreText>().FromComponentInHierarchy().AsSingle();
+
+            Container.BindSignal<CoinCollectedSignal>()
+                .ToMethod<CoinsSpawner>(x => x.OnCoinCollected).FromResolve();
             Container.BindSignal<CoinCollectedSignal>()
                 .ToMethod<ScoreController>(x => x.OnCoinCollectedSignalReceived).FromResolve();
         }
