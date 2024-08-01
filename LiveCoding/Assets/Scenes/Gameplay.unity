@@ -879,7 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialCount: 10
   _bounds: {fileID: 277657997}
-  _coinPrefab: {fileID: 3772880328290451037, guid: 89607939b7bc47d439f86b97937ce71b, type: 3}
+  _coinPrefab: {fileID: 2620096732497355611, guid: 89607939b7bc47d439f86b97937ce71b, type: 3}
   _coinsParent: {fileID: 44887732}
 --- !u!4 &1620626769
 Transform:
