@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +7,7 @@ namespace Coins
 {
     public class Coin : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] private CoinsAnimationSettings _animationSettings;
         private SignalBus _signalBus;
         private CoinsSpawner _coinsSpawner;
 
@@ -25,8 +25,13 @@ namespace Coins
 
         private void RotateInfinitely()
         {
-            transform.DOLocalRotate(new Vector3(360 * 50, 0, 0), 50, RotateMode.FastBeyond360).SetRelative(true)
-                .SetEase(Ease.Linear);
+            transform.DOLocalRotate(
+                    _animationSettings.rotationVector * _animationSettings.rotationSpeed,
+                    _animationSettings.duration,
+                    _animationSettings.rotateMode)
+                .SetRelative(_animationSettings.relative)
+                .SetEase(_animationSettings.easeAnimationCurve)
+                .SetLoops(_animationSettings.loopsAmount);
         }
 
         public void OnPointerClick(PointerEventData eventData)
