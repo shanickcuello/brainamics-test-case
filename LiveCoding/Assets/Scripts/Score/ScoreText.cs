@@ -1,18 +1,21 @@
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class ScoreText : MonoBehaviour
+namespace Score
 {
-    private TextMeshProUGUI _text;
-
-    private void Awake()
+    [RequireComponent(typeof(TextMeshProUGUI))]
+    public class ScoreText : MonoBehaviour
     {
-        _text = GetComponent<TextMeshProUGUI>();
-    }
+        private TextMeshProUGUI _text;
 
-    public void SetScore(int score)
-    {
-        _text.text = score.ToString();
+        private void Awake()
+        {
+            _text = GetComponent<TextMeshProUGUI>();
+        }
+
+        public void SetScore(int score)
+        {
+            _text.text = score.ToString();
+        }
     }
 }

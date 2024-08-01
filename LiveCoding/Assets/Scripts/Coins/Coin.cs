@@ -10,12 +10,28 @@ namespace Coins
         [SerializeField] private CoinsAnimationSettings _animationSettings;
         private SignalBus _signalBus;
         private CoinsSpawner _coinsSpawner;
-
+        
         [Inject]
         public void Construct(SignalBus signalBus, CoinsSpawner coinsSpawner)
         {
             _signalBus = signalBus;
             _coinsSpawner = coinsSpawner;
+        }
+        
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            _signalBus.Fire(new CoinCollectedSignal());
+            _coinsSpawner.ReturnCoinToPool(this);
+        }
+
+        public static void TurnOn(Coin coin)
+        {
+            coin.gameObject.SetActive(true);
+        }
+
+        public static void TurnOff(Coin coin)
+        {
+            coin.gameObject.SetActive(false);
         }
 
         private void Start()
@@ -32,22 +48,6 @@ namespace Coins
                 .SetRelative(_animationSettings.relative)
                 .SetEase(_animationSettings.easeAnimationCurve)
                 .SetLoops(_animationSettings.loopsAmount);
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            _signalBus.Fire(new CoinCollectedSignal());
-            _coinsSpawner.ReturnCoinToPool(this);
-        }
-
-        public static void TurnOn(Coin coin)
-        {
-            coin.gameObject.SetActive(true);
-        }
-
-        public static void TurnOff(Coin coin)
-        {
-            coin.gameObject.SetActive(false);
         }
     }
 }

@@ -1,4 +1,5 @@
 using Coins;
+using Score;
 using Zenject;
 
 namespace DependencyInjection

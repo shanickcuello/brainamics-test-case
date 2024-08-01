@@ -1,9 +1,10 @@
 using Coins;
+using Score;
 using Zenject;
 
 public class ScoreController
 {
-    private int Score = 0;
+    private int _score = 0;
     private readonly ScoreText _scoreText;
 
     [Inject]
@@ -14,7 +15,7 @@ public class ScoreController
     
     public void OnCoinCollectedSignalReceived(CoinCollectedSignal signal)
     {
-       Score++;
-       _scoreText.SetScore(Score);
+       _score++;
+       _scoreText.SetScore(_score);
     }
 }

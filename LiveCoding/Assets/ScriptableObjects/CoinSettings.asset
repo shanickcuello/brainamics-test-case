@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196f997b05a34cbabaea1d91bfb16473, type: 3}
   m_Name: CoinSettings
   m_EditorClassIdentifier: 
-  rotationVector: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  rotateMode: 0
+  rotationVector: {x: 360, y: 0, z: 0}
+  rotationSpeed: 1
+  rotateMode: 1
   relative: 1
   easeAnimationCurve: 1
   duration: 1

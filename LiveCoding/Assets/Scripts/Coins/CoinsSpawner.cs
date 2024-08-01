@@ -5,13 +5,15 @@ namespace Coins
 {
     public class CoinsSpawner : MonoBehaviour
     {
-        public int InitialCount = 10;
-        private ObjectPool<Coin> _pool;
-        private const float CoinHeightSpawnPosition = .5f;
         [SerializeField] private Collider _bounds;
         [SerializeField] private Coin _coinPrefab;
         [SerializeField] private Transform _coinsParent;
-
+        
+        public int InitialCount = 10;
+        
+        private ObjectPool<Coin> _pool;
+        private const float CoinHeightSpawnPosition = .5f;
+        
         private void Start()
         {
             _pool = new ObjectPool<Coin>(GetCoinInstance, Coin.TurnOn, Coin.TurnOff, InitialCount);
