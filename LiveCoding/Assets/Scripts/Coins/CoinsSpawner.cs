@@ -7,6 +7,7 @@ namespace Coins
     {
         public int InitialCount = 10;
         private ObjectPool<Coin> _pool;
+        private const float CoinHeightSpawnPosition = .5f;
         [SerializeField] private Collider _bounds;
         [SerializeField] private Coin _coinPrefab;
         [SerializeField] private Transform _coinsParent;
@@ -36,7 +37,7 @@ namespace Coins
             var coin = _pool.GetObject();
             var min = _bounds.bounds.min;
             var max = _bounds.bounds.max;
-            var val = new Vector3(Random.Range(min.x, max.x), 0, Random.Range(min.z, max.z));
+            var val = new Vector3(Random.Range(min.x, max.x), CoinHeightSpawnPosition, Random.Range(min.z, max.z));
             coin.transform.position = val;
         }
 
