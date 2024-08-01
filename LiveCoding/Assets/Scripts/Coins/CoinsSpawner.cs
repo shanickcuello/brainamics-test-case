@@ -21,14 +21,19 @@ namespace Coins
 
             for (var i = 0; i < InitialCount; i++)
             {
-                var coin = Pool.GetObject();
-                var min = _bounds.bounds.min;
-                var max = _bounds.bounds.max;
-                var val = new Vector3(Random.Range(min.x, max.x), 0, Random.Range(min.z, max.z));
-                coin.transform.position = val;
+                InstantiateCoin();
             }
         }
-        
+
+        private void InstantiateCoin()
+        {
+            var coin = Pool.GetObject();
+            var min = _bounds.bounds.min;
+            var max = _bounds.bounds.max;
+            var val = new Vector3(Random.Range(min.x, max.x), 0, Random.Range(min.z, max.z));
+            coin.transform.position = val;
+        }
+
         private Coin GetCoinInstance()
         {
             var coin = Instantiate(_coinPrefab, _coinsParent);
@@ -38,6 +43,11 @@ namespace Coins
         public void ReturnCoinToPool(Coin coin)
         {
             Pool.ReturnObject(coin);
+        }
+
+        public void OnCoinCollected()
+        {
+            InstantiateCoin();
         }
     }
 }
